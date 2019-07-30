@@ -2,8 +2,8 @@
 # ROS Hacks Repo
 
 ## Overview
-The repository presents several files designed to make ROS developer's life easier.
-After the installation a few usefull aliases and functions added to the terminal.
+The repository is designed to make ROS developer's life easier.
+After the installation usefull aliases and functions will be added to the terminal.
 Everything was tested on Ubuntu 18.04.2 with ROS Melodic & ROS2 Dashing.
 
 ## Installation
@@ -16,9 +16,9 @@ Clone the repo into some folder, for example:
 
 ```git clone https://github.com/yossioo/ROS-Hacks.git ~/.ROS-Hacks```
 
-or if you like SSH😉 and like to keep things:
+or if you like SSH😉:
 
-```git clone git@github.com:yossioo/ROS-Hacks.git```
+```git clone git@github.com:yossioo/ROS-Hacks.git ~/.ROS-Hacks```
 
 Navigate to the directory and execute the `setup.sh` script (make sure it has execute permissions).
 
@@ -26,25 +26,28 @@ Navigate to the directory and execute the `setup.sh` script (make sure it has ex
 
 The `~/.inputrc` file is saved to  `~/.inputrc.bak` prior to being overwritten.
 
-Defaults for ROS versions are: Melodic for ROS1, and Dashing for ROS2. Adjust in ``~/aliases.sh` if needed.
+Defaults for ROS versions are: Melodic for ROS1, and Dashing for ROS2. Adjust in `~/aliases.sh` if needed.
 
 ## Terminal shortcuts
-The shortcuts can be run immediately after the installation in new terminal. _Note: re-sourcing `~/.bashrc` isn't enough._
+The shortcuts can be run in a **new** terminal after the installation. _Note: re-sourcing `~/.bashrc` isn't enough._
 
 Complete list of the shortcuts can be seen in  [`inputrc`](inputrc) file.
 Few of them presented below:
 
 | Shortcut | Executed command | Description |
 | ------ | ------ |  ------ |
-| F3 | select_ws | Display ROS workspace selection dialog. |
-| Shift-F3 | prompt_new_ws | Display new ROS workspace creation dialog. |
-| F3 | select_ws | Display workspace selection dialog. |
+| F3 | select_ws | Displays ROS workspace selection dialog. |
+| Shift-F3 | prompt_new_ws | Displays new ROS workspace creation dialog. |
+| F3 | select_ws | Displays workspace selection dialog. |
 | F9 | rebuild_curr_ws | Re-builds the currently selected workspace and sources it. |
-| Shift-F12 | set-quick-command | Saves currently typed in command for quick-launch<sup>1</sup>. |
+| Shift-F12 | set-quick-command | Saves currently typed-in command for quick-launch<sup>1</sup>. |
 | F12 | exec-quick-command | Executes the saved command in detached tmux session. |
 | ... | .... |....... |
 
-<sup>1</sup> The function is primarily targeted for quick launching and killing of Gazebo worlds using various `roslaunch` commands. A quick execution command is saved for each workspace separately.
+<sup>1</sup> The function is primarily targeted for quick launching and killing of Gazebo worlds using various `roslaunch` commands. A quick execution commands are saved for each workspace separately.
+
+Example of usage of Quick Command:
+Type in terminal `roslaunch gazebo_ros empty_world.launch`, hit **`Shift-F12`**. The command will be saved for currently sourced workspace. Hit **`F12`** to execute the command in background tmux session. The Gazebo client GUI will show up. Hit  **`Ctrl-F12`** to stop the session, killing Gazebo along with all ROS nodes (currently only on ROS1).
 
 ## Aliases
 Complete list of the aliases can be seen in  [`aliases.sh`](aliases.sh) file.
