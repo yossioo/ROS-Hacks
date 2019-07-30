@@ -1,0 +1,52 @@
+# Refer to: https://stackoverflow.com/questions/4200800/in-bash-how-do-i-bind-a-function-key-to-a-command
+#  https://superuser.com/questions/269464/understanding-control-characters-in-inputrc
+
+"\e\C-t": "rostopic list\n"
+"\e\C-n": "rosnode list\n"
+
+
+# Use F3 to call select_ws
+"\eOR": "select_ws\n"
+# Shift-F3 - Create new WS
+"\e[1;2R": "prompt_new_ws\n"
+
+# Shift-F1/F2 shortcut to install ROS package
+"\e[1;2P": "sudo apt install -y ros-${ROS1_NAME}-\e\C-e"
+"\e[1;2Q": "sudo apt install -y ros-${ROS2_NAME}-\e\C-e"
+
+# Source bash, catkin etc.
+"\e[15~": "source ~/.bashrc\n"              # On F5
+"\eOS": "source_ws $(cat $WS_FILE); cs;\n"              # On F4
+
+# Rebuild the current workspace
+"\e[20~": "rebuild_curr_ws\n"               # On F9
+"\e[20;2~": "rebuild_curr_ws && exit\n"               # On Shift-F9
+
+# One key quick launch in background (tmux)
+"\e[24;2~": "\e[Hset-quick-command \"\e[F\" \n"               # On Shift-F12
+"\e[24;5~": "kill-tmux-quick-command\n"               # On Ctrl-F12
+"\e[24~": "exec-quick-command\n"               # On F12
+"\e[24;6~": "print-quick-command \n"               # On Ctrl-Shift-F12
+
+
+
+"\e\C-i": "sudo apt install -y "
+"\e\C-p": "python3 -m pip install "
+
+
+# mappings for Ctrl-left-arrow and Ctrl-right-arrow for word moving
+"\e[1;5C": forward-word
+"\e[1;5D": backward-word
+"\e[5C": forward-word
+"\e[5D": backward-word
+"\e\e[C": forward-word
+"\e\e[D": backward-word
+
+
+#set completion-ignore-case on
+set bell-style visible
+set convert-meta off
+set input-meta on
+set output-meta on
+#set show-all-if-ambiguous on
+#set visible-stats on
