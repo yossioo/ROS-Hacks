@@ -9,20 +9,28 @@ Everything was tested on Ubuntu 18.04.2 with ROS Melodic & ROS2 Dashing.
 ## Installation
 Make sure that `tmux` is installed:
 
-```sudo apt install tmux```
+```shell
+sudo apt install tmux
+```
 
 
 Clone the repo into some folder, for example:
 
-```git clone https://github.com/yossioo/ROS-Hacks.git ~/.ROS-Hacks```
+```shell
+git clone https://github.com/yossioo/ROS-Hacks.git ~/.ROS-Hacks
+```
 
 or if you like SSH😉:
 
-```git clone git@github.com:yossioo/ROS-Hacks.git ~/.ROS-Hacks```
+```shell
+git clone git@github.com:yossioo/ROS-Hacks.git ~/.ROS-Hacks
+```
 
 Navigate to the directory and execute the `setup.sh` script.
 
-```cd ~/.ROS-Hacks;  bash /setup.sh```
+```shell
+cd ~/.ROS-Hacks;  bash /setup.sh
+```
 
 The `~/.inputrc` file is saved to  `~/.inputrc.bak` prior to being overwritten.
 
@@ -36,12 +44,12 @@ Few of them presented below:
 
 | Shortcut | Executed command | Description |
 | ------ | ------ |  ------ |
-| F3 | select_ws | Displays ROS workspace selection dialog. |
-| Shift-F3 | prompt_new_ws | Displays new ROS workspace creation dialog. |
-| F3 | select_ws | Displays workspace selection dialog. |
-| F9 | rebuild_curr_ws | Re-builds the currently selected workspace and sources it. |
-| Shift-F12 | set-quick-command | Saves currently typed-in command for quick-launch<sup>1</sup>. |
-| F12 | exec-quick-command | Executes the saved command in detached tmux session. |
+| F3 | `select_ws` | Displays ROS workspace selection dialog. |
+| Shift-F3 | `prompt_new_ws` | Displays new ROS workspace creation dialog. |
+| F3 | `select_ws` | Displays workspace selection dialog. |
+| F9 | `rebuild_curr_ws` | Re-builds the currently selected workspace and sources it. |
+| Shift-F12 | `set-quick-command` | Saves currently typed-in command for quick-launch<sup>1</sup>. |
+| F12 | `exec-quick-command` | Executes the saved command in detached tmux session. |
 | ... | .... |....... |
 
 <sup>1</sup> The function is primarily targeted for quick launching and killing of Gazebo worlds using various `roslaunch` commands. A quick execution commands are saved for each workspace separately.
