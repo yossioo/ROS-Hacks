@@ -20,9 +20,9 @@ or if you like SSH😉:
 
 ```git clone git@github.com:yossioo/ROS-Hacks.git ~/.ROS-Hacks```
 
-Navigate to the directory and execute the `setup.sh` script (make sure it has execute permissions).
+Navigate to the directory and execute the `setup.sh` script.
 
-```cd ~/.ROS-Hacks; ./setup.sh```
+```cd ~/.ROS-Hacks;  bash /setup.sh```
 
 The `~/.inputrc` file is saved to  `~/.inputrc.bak` prior to being overwritten.
 
