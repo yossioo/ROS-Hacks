@@ -40,7 +40,7 @@ Defaults for ROS versions are: Melodic for ROS1, and Dashing for ROS2. Adjust in
 The shortcuts can be run in a **new** terminal after the installation. _Note: re-sourcing `~/.bashrc` isn't enough._
 
 Complete list of the shortcuts can be seen in  [`inputrc`](inputrc) file.
-Few of them presented below:
+Few of them are presented below:
 
 | Shortcut | Executed command | Description |
 | ------ | ------ |  ------ |
@@ -59,7 +59,7 @@ Type in terminal `roslaunch gazebo_ros empty_world.launch`, hit **`Shift-F12`**.
 
 ## Aliases
 Complete list of the aliases can be seen in  [`aliases.sh`](aliases.sh) file.
-Few of them presented below:
+Few of them are presented below:
 
 | Alias | Expanded command | Description |
 | ------ | ------ |  ------ |
