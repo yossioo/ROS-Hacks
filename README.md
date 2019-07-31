@@ -29,7 +29,7 @@ git clone git@github.com:yossioo/ROS-Hacks.git ~/.ROS-Hacks
 Navigate to the directory and execute the `setup.sh` script.
 
 ```shell
-cd ~/.ROS-Hacks;  bash /setup.sh
+cd ~/.ROS-Hacks;  bash setup.sh
 ```
 
 The `~/.inputrc` file is saved to  `~/.inputrc.bak` prior to being overwritten.
@@ -69,9 +69,37 @@ Few of them are presented below:
 | ... | .... |....... |
 
 ## Functions
-Complete list of the functions can be seen in  [`functions.sh`](functions.sh) file.
 
-The function names are self explanatory, but should a need arise, some documentation can be added.
+### Quick Launch 
+| Function | Description |
+| ------ | ------ |
+| `set-quick-command` | Saves the command for further use. |
+| `get-quick-command` | Loads the command. |
+| `print-quick-command` | Displays the command. |
+| `exec-quick-command` | Executes the command in background *tmux* session. |
+| `kill-tmux-quick-command` | Ends the execution of the *tmux* session, along with *Gazebo* and **ALL** ROS nodes. |
+| ... | .... |
+
+### ROS Workspace 
+
+A simple UI for ROS workspace creation and selection is defined in several functions.
+
+| Function | Description |
+| ------ | ------ |
+| `select_ws` | Shows dialog for WS selections |
+| `prompt_new_ws` | Shows dialog for new ROS workspace creation (ROS1/ROS2). |
+| `rebuild_curr_ws` | Rebuilds ROS workspace (ROS1 - catkin/ROS2 - colcon). |
+| ... | .... |
+
+### Miscellaneous 
+| Function | Description |
+| ------ | ------ |
+| `RM` | Sets `ROS_MASTER_URI` variable, optionally in local network. |
+| `rt` | Executes `rostopic` with grep for desired argument. |
+| `fixJB` | Updates JetBrains' shortcuts for CLion and PyCharm to be launched within ROS workspace. |
+| `unROS` | Cleans all ROS-related environment variables. |
+| ... | .... |
+
 
 ## Removal
 Clear `~/.bashrc` file from the added lines. Delete the repo. Voilà!
