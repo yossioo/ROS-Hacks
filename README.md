@@ -7,10 +7,10 @@ After the installation usefull aliases and functions will be added to the termin
 Everything was tested on Ubuntu 18.04.2 with ROS Melodic & ROS2 Dashing.
 
 ## Installation
-Make sure that `tmux` is installed:
+Make sure that `tmux` and `python-catkin-tools` is installed:
 
 ```shell
-sudo apt install tmux
+sudo apt install tmux python-catkin-tools
 ```
 
 
