@@ -46,7 +46,7 @@ Few of them are presented below:
 | ------ | ------ |  ------ |
 | F3 | `select_ws` | Displays ROS workspace selection dialog. |
 | Shift-F3 | `prompt_new_ws` | Displays new ROS workspace creation dialog. |
-| F3 | `select_ws` | Displays workspace selection dialog. |
+| F5 | `source ~/.bashrc` | You know what it does :) |
 | F9 | `rebuild_curr_ws` | Re-builds the currently selected workspace and sources it. |
 | Shift-F12 | `set-quick-command` | Saves currently typed-in command for quick-launch<sup>1</sup>. |
 | F12 | `exec-quick-command` | Executes the saved command in detached tmux session. |
