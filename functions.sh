@@ -15,7 +15,7 @@ function set-quick-command() {
   if [[ -z "${lstring}" ]]; then
     printf "${RED_TXT}Quick command string not specified.${NC}\n"
   else
-    printf "Saving the Quick-Command ${GREEN_TXT}$lstring${NC} for tests. Hit ${LIGHT_BLUE_TXT}F12${NC} in terminal to launch it in background.\n"
+    printf "Saving the Quick-Command ${GREEN_TXT}$lstring${NC} for tests.\nHit ${LIGHT_BLUE_TXT}F12${NC} in terminal to launch it in background.\n"
     echo $lstring >${curr_ws}/$QUICK_COMMAND_FILE
     curr_quick_command=$(cat ${curr_ws}/$QUICK_COMMAND_FILE)
   fi
@@ -29,13 +29,13 @@ function get-quick-command() {
 }
 function print-quick-command() {
   get-quick-command
-  printf "Quick command set to: ${GREEN_TXT}$curr_quick_command${NC}.\n"
+  printf "Quick command set to: ${GREEN_TXT}$curr_quick_command${NC}\n"
 }
 function exec-quick-command() {
   # source ~/.bashrc
   get-quick-command
   if [[ -f "${curr_ws}/$QUICK_COMMAND_FILE" ]]; then
-    printf "Executing ${GREEN_TXT}$curr_quick_command${NC} in tmux session. Use '${LIGHT_BLUE_TXT}tmux a -t quick_command${NC}' to attach to session\n"
+    printf "Executing ${GREEN_TXT}$curr_quick_command${NC} in tmux session.\nUse '${LIGHT_BLUE_TXT}tmux a -t quick_command${NC}' to attach to session\n"
     tmux new -s quick_command -d "${curr_quick_command}"
   else
     printf "${RED_TXT}No launch specified in $curr_ws${NC}.\n"

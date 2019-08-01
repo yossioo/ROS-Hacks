@@ -25,8 +25,8 @@ QUICK_COMMAND_FILE=.quick_command
 
 alias pR='printenv | grep -i -e ROS -e CATKIN -e CMAKE'
 alias sc='source_ws $(cat $WS_FILE)'
-alias sr='source /opt/ros/${ROS1_NAME}/setup.bash && wr'
-alias csr='unROS; source /opt/ros/${ROS1_NAME}/setup.bash && wr'
+alias sr='source /opt/ros/${ROS1_NAME}/setup.bash'
+alias csr='unROS; source /opt/ros/${ROS1_NAME}/setup.bash'
 alias sr2='source /opt/ros/${ROS2_NAME}/setup.bash'
 alias csr2='unROS; source /opt/ros/${ROS2_NAME}/setup.bash'
 
