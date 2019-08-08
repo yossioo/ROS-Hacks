@@ -3,7 +3,12 @@ if [[ ${SKIP} == 1 ]]; then
   return 1
 fi
 
-ROS1_NAME='melodic'
+if [[ $(lsb_release -cs) == 'xenial' ]]; then
+  ROS1_NAME='kinetic'
+elif [[ $(lsb_release -cs) == 'bionic' ]]; then
+  ROS1_NAME='melodic'
+fi
+
 ROS2_NAME='dashing'
 
 # Define colors:
