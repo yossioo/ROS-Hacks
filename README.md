@@ -7,10 +7,10 @@ After the installation usefull aliases and functions will be added to the termin
 Everything was tested on Ubuntu 18.04.2 with ROS Melodic & ROS2 Dashing.
 
 ## Installation
-Make sure that `tmux` is installed:
+Make sure that `tmux` and `python-catkin-tools` is installed:
 
 ```shell
-sudo apt install tmux
+sudo apt install tmux python-catkin-tools
 ```
 
 
@@ -46,7 +46,7 @@ Few of them are presented below:
 | ------ | ------ |  ------ |
 | F3 | `select_ws` | Displays ROS workspace selection dialog. |
 | Shift-F3 | `prompt_new_ws` | Displays new ROS workspace creation dialog. |
-| F3 | `select_ws` | Displays workspace selection dialog. |
+| F5 | `source ~/.bashrc` | You know what it does :) |
 | F9 | `rebuild_curr_ws` | Re-builds the currently selected workspace and sources it. |
 | Shift-F12 | `set-quick-command` | Saves currently typed-in command for quick-launch<sup>1</sup>. |
 | F12 | `exec-quick-command` | Executes the saved command in detached tmux session. |
