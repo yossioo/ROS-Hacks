@@ -311,6 +311,10 @@ function determine_ws_ros_version() {
       # echo CATKIN_IGNORE FOUND
       catkinws=1
     fi
+    if [[ -f "${ws}/build/CATKIN_IGNORE" ]]; then
+      # echo CATKIN_IGNORE FOUND
+      catkinws=1
+    fi
     if [[ -f "${ws}/build/COLCON_IGNORE" ]]; then
       # echo CATKIN_IGNORE FOUND
       colconws=1
