@@ -44,7 +44,7 @@
 
 
 #set completion-ignore-case on
-set bell-style visible
+#set bell-style visible
 set convert-meta off
 set input-meta on
 set output-meta on
