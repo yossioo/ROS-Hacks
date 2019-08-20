@@ -236,12 +236,20 @@ function rebuild_curr_ws() {
     csr
     cd $curr_ws
     cab
-    source_ws $curr_ws
+    if [[ $? == 0 ]]; then
+      source_ws $curr_ws
+    else
+      printf "${RED_TXT}catkin errors - sourcing aborted.${NC}\n"
+    fi
   elif [[ $ros_type == "ROS2" ]]; then # Catkin found in ws
     csr2
     cd $curr_ws
     cob
-    source_ws $curr_ws
+    if [[ $? == 0 ]]; then
+      source_ws $curr_ws
+    else
+      printf "${RED_TXT}catkin errors - sourcing aborted.${NC}\n"
+    fi
   else
     printf "${RED_TXT}ERROR in ROS WS $ws_name - Sourcing aborted.${NC}\n"
   fi
