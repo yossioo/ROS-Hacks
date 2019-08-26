@@ -394,3 +394,18 @@ function fixJB() {
   sed -i -e 's/Exec="/Exec=bash -i -c "/g' ~/.local/share/applications/jetbrains-pycharm.desktop
   sed -i -e 's/Name=PyCharm Professional/Name=ROS flavored PyCharm Professional/g' ~/.local/share/applications/jetbrains-pycharm.desktop
 }
+
+### Arducopter TMUX:
+function arducopter-launch() {
+  ac_arguments="-f gazebo-goshawk200 -I0 -L wpK2"
+  ac_line="cd ~/ardupilot/ArduCopter; ~/ardupilot/Tools/autotest/sim_vehicle.py $ac_arguments"
+  printf "Launching ArduCopter with ${LIGHT_BLUE_TXT}$ac_arguments${NC}\n"
+  tmux new -s arducopter_launch -d "${ac_line}"
+}
+
+function kill-arducopter() {
+  printf "${YELLOW_TXT}Killing arducopter proxy${NC}.\n"
+  tmux send-keys -t arducopter_launch.0 C-c C-c C-d ENTER
+  tmux kill-session -t arducopter_launch
+  pkill -f ArduCopter
+}
