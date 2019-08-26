@@ -87,19 +87,15 @@ function createWS() {
     if [[ -z "${name}" ]]; then
       printf "${RED_TXT}ROS workspace name not specified.${NC}\n"
     else
+      mkdir -p ~/${name}_ws/src
+      set_current_ws ~/${name}_ws
+      get_current_ws
+      cd $curr_ws
       if [[ $type == "ROS1" ]]; then # Catkin found in ws
-        mkdir -p ~/${name}_ws/src
-        set_current_ws ~/${name}_ws
-        get_current_ws
-        cd $curr_ws
         csr
         catkin build
         source_ws ${curr_ws}
       elif [[ $type == "ROS2" ]]; then # Catkin found in ws
-        mkdir -p ~/${name}_ws/src
-        set_current_ws ~/${name}_ws
-        get_current_ws
-        cd $curr_ws
         csr2
         colcon build --symlink-install
         source_ws ${curr_ws}
