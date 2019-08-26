@@ -7,6 +7,10 @@ function kill-tmux-quick-command() {
   pkill gzserver
   pkill gzclient
   rosnode kill -a
+  get_current_ws
+  if [[ ${curr_ws} == *"angry"* ]] || [[ ${curr_ws} == *"birds"* ]]; then
+    kill-arducopter
+  fi
 }
 
 function set-quick-command() {
@@ -34,6 +38,10 @@ function print-quick-command() {
 function exec-quick-command() {
   # source ~/.bashrc
   get-quick-command
+  if [[ ${curr_ws} == *"angry"* ]] || [[ ${curr_ws} == *"birds"* ]]; then
+    arducopter-launch
+  fi
+
   if [[ -f "${curr_ws}/$QUICK_COMMAND_FILE" ]]; then
     printf "Executing ${GREEN_TXT}$curr_quick_command${NC} in tmux session.\nUse '${LIGHT_BLUE_TXT}tmux a -t quick_command${NC}' to attach to session\n"
     tmux new -s quick_command -d "${curr_quick_command}"
