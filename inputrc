@@ -3,7 +3,11 @@
 
 "\e\C-t": "rostopic list\n"
 "\e\C-n": "rosnode list\n"
+"\e\C-g": "git clone "
 
+
+# Watch the typed command
+"\e[15;5~": "\e[Hwatch -n 0.1 \"\e[F\" \n"              # On Ctrl+F5
 
 # Use F3 to call select_ws
 "\eOR": "select_ws\n"
@@ -17,6 +21,7 @@
 # Source bash, catkin etc.
 "\e[15~": "source ~/.bashrc\n"              # On F5
 "\eOS": "source_ws $(cat $WS_FILE); cs;\n"              # On F4
+"\e[18~": "source ~/angry_birds_ros1_ws/src/angry_birds_ros/angry_birds_ros/aliases.bash\n"               # On F7
 
 # Rebuild the current workspace
 "\e[20~": "rebuild_curr_ws\n"               # On F9
@@ -26,7 +31,10 @@
 "\e[24;2~": "\e[Hset-quick-command \"\e[F\" \n"               # On Shift-F12
 "\e[24;5~": "kill-tmux-quick-command\n"               # On Ctrl-F12
 "\e[24~": "exec-quick-command\n"               # On F12
-"\e[24;6~": "print-quick-command \n"               # On Ctrl-Shift-F12
+"\e[24;6~": "$(cat ${curr_ws}/$QUICK_COMMAND_FILE)\e\C-e"               # On Ctrl-Shift-F12
+#"\e[24;6~": "print-quick-command \n"               # On Ctrl-Shift-F12
+#"\e[24;6~": "get-quick-command; $curr_quick_command\e\C-e"               # On Ctrl-Shift-F12
+"\e[23;2~": "tmux a -t quick_command\n"               # On Ctrl-Shift-F12
 
 
 
