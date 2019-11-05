@@ -238,8 +238,7 @@ function rebuild_curr_ws() {
   determine_ws_ros_version $curr_ws
   if [[ $ros_type == "ROS1" ]]; then # Catkin found in ws
     csr
-    cd $curr_ws
-    cab
+    (cd $curr_ws && cab)
     if [[ $? == 0 ]]; then
       source_ws $curr_ws
     else
@@ -247,8 +246,7 @@ function rebuild_curr_ws() {
     fi
   elif [[ $ros_type == "ROS2" ]]; then # Catkin found in ws
     csr2
-    cd $curr_ws
-    cob
+    (cd $curr_ws && cob)
     if [[ $? == 0 ]]; then
       source_ws $curr_ws
     else
