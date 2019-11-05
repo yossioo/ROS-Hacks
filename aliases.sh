@@ -44,5 +44,13 @@ alias whgit='git config --get remote.origin.url'
 alias o='sudo chown -R $USER:$USER '
 alias x='chmod +x '
 alias mke='make -j`nproc`'
+alias temp='watch -n 0.1 sensors'
 
-export EDITOR='nano -w'
+shopt -s histappend
+shopt -s cmdhist
+export PROMPT_COMMAND='history -a'
+export HISTFILESIZE=1000000
+export HISTSIZE=1000000
+export HISTCONTROL=ignoreboth
+export HISTIGNORE='t:f:l:ls:bg:fg:history:h:select_ws:kill-tmux-gz:test-launch:qe-file:kp:kill-tmux-quick-command:exec-quick-command'
+export HISTTIMEFORMAT='%F %T '
