@@ -108,7 +108,7 @@ function createWS() {
 
 function unROS() {
   # Get all variables containing 'ROS' or 'ros'
-  vars=$(env | grep -i ROS | column -t -s '=' | sed -E 's/ .*//g')
+  vars=$(env | egrep -i ROS | column -t -s '=' | sed -E 's/ .*//g')
 
   # For everyone do:
   for v in $vars; do
@@ -143,7 +143,10 @@ function unROS() {
       done
       # After all fields are processed - move the temp var to the original
       export ${v}=$(printenv ${v}_tmp)
-      unset ${v}_tmp # Just to be shure, maybe not required
+      unset ${v}_tmp # Just to be sure, maybe not required
+      if [[ -z "$(printenv ${v})" ]]; then
+        unset $v
+      fi
     fi
   done
 
