@@ -414,3 +414,17 @@ function kill-arducopter() {
   tmux kill-session -t arducopter_launch
   pkill -f ArduCopter
 }
+
+function clean_ROS2_ws() {
+  ws=${1:-""}
+  if [[ -z "${ws}" ]]; then
+    printf "${RED_TXT}ROS workspace path not specified.${NC}\n"
+  else
+    printf "${YELLOW_TXT}Clearing the workspace: ${ws} ${NC}  "
+    find ${ws}/log -mindepth 1 -maxdepth 1 -type d -print0 | xargs -0 rm -R >/dev/null 2>&1
+    find ${ws}/install -mindepth 1 -maxdepth 1 -type d -print0 | xargs -0 rm -R >/dev/null 2>&1
+    find ${ws}/build -mindepth 1 -maxdepth 1 -type d -print0 | xargs -0 rm -R >/dev/null 2>&1
+    printf "${GREEN_TXT}---DONE---${NC}\n"
+  fi
+
+}

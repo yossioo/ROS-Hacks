@@ -37,6 +37,7 @@ alias csr2='unROS; source /opt/ros/${ROS2_NAME}/setup.bash'
 
 alias cab='catkin build --summary'
 alias cob='colcon build --symlink-install'
+alias coc='clean_ROS2_ws $(cat $WS_FILE)'
 alias cw='cd $(cat $WS_FILE)'
 alias cs='cd $(cat $WS_FILE)/src'
 
