@@ -21,7 +21,7 @@
 # Source bash, catkin etc.
 "\e[15~": "source ~/.bashrc\n"              # On F5
 "\eOS": "source_ws $(cat $WS_FILE); cs;\n"              # On F4
-"\e[18~": "source ~/angry_birds_ros1_ws/src/angry_birds_ros/angry_birds_ros/aliases.bash\n"               # On F7
+"\e[18~": "source ~/ab_ros1_ws/src/angry_birds_ros/angry_birds_ros/aliases.bash\n"               # On F7
 
 # Rebuild the current workspace
 "\e[20~": "rebuild_curr_ws\n"               # On F9

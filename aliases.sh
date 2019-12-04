@@ -28,7 +28,7 @@ NC='\033[0m'
 WS_FILE=$HOME/.ros_ws_selected
 QUICK_COMMAND_FILE=.quick_command
 
-alias pR='printenv | grep -i -e ROS -e CATKIN -e CMAKE'
+alias pR='printenv | grep -i -e ROS -e CATKIN -e CMAKE -e RMW'
 alias sc='source_ws $(cat $WS_FILE)'
 alias sr='source /opt/ros/${ROS1_NAME}/setup.bash'
 alias csr='unROS; source /opt/ros/${ROS1_NAME}/setup.bash'
