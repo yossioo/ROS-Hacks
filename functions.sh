@@ -394,10 +394,32 @@ function rt() {
 }
 
 function fixJB() {
-  sed -i -e 's/Exec="/Exec=bash -i -c "/g' ~/.local/share/applications/jetbrains-clion.desktop
-  sed -i -e 's/Name=CLion/Name=ROS flavored CLion/g' ~/.local/share/applications/jetbrains-clion.desktop
-  sed -i -e 's/Exec="/Exec=bash -i -c "/g' ~/.local/share/applications/jetbrains-pycharm.desktop
-  sed -i -e 's/Name=PyCharm Professional/Name=ROS flavored PyCharm Professional/g' ~/.local/share/applications/jetbrains-pycharm.desktop
+  CLION_FILE=~/.local/share/applications/jetbrains-clion.desktop
+  PYCHARM_FILE=~/.local/share/applications/jetbrains-pycharm.desktop
+  PYCHARM_CE_FILE=~/.local/share/applications/jetbrains-pycharm-ce.desktop
+  if [ -f "$CLION_FILE" ]; then
+    printf "${GREEN_TXT}Patching Clion shortcut.${NC}\n"
+    sed -i -e 's/Exec="/Exec=bash -i -c "/g' $CLION_FILE
+    sed -i -e 's/Name=CLion/Name=ROS flavored CLion/g' $CLION_FILE
+  else
+    printf "${YELLOW_TXT}Clion not found in ~/.local/share/applications${NC}\n"
+  fi
+
+  if [ -f "$PYCHARM_FILE" ]; then
+    printf "${GREEN_TXT}Patching Pycharm Professional shortcut.${NC}\n"
+    sed -i -e 's/Exec="/Exec=bash -i -c "/g' $PYCHARM_FILE
+    sed -i -e 's/Name=PyCharm Professional/Name=ROS flavored PyCharm Professional/g' $PYCHARM_FILE
+  else
+     printf "${YELLOW_TXT}PyCharm Professional not found in ~/.local/share/applications${NC}\n"
+  fi
+
+  if [ -f "$PYCHARM_CE_FILE" ]; then
+    printf "${GREEN_TXT}Patching PyCharm CE shortcut.${NC}\n"
+    sed -i -e 's/Exec="/Exec=bash -i -c "/g' $PYCHARM_CE_FILE
+    sed -i -e 's/Name=PyCharm CE/Name=ROS flavored PyCharm CE/g' $PYCHARM_CE_FILE
+  else
+     printf "${YELLOW_TXT}PyCharm CE not found in ~/.local/share/applications${NC}\n"
+  fi
 }
 
 ### Arducopter TMUX:
