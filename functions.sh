@@ -338,7 +338,7 @@ function determine_ws_ros_version() {
       if [[ $colconws -eq "1" ]]; then # COLCON found in ws
         ros_type='MIXED'
       fi
-    else # Catkin not found in ws
+    else                               # Catkin not found in ws
       if [[ $colconws -eq "1" ]]; then # COLCON found in ws
         ros_type='ROS2'
       else
@@ -410,15 +410,15 @@ function fixJB() {
     sed -i -e 's/Exec="/Exec=bash -i -c "/g' $PYCHARM_FILE
     sed -i -e 's/Name=PyCharm Professional/Name=ROS flavored PyCharm Professional/g' $PYCHARM_FILE
   else
-     printf "${YELLOW_TXT}PyCharm Professional not found in ~/.local/share/applications${NC}\n"
+    printf "${YELLOW_TXT}PyCharm Professional not found in ~/.local/share/applications${NC}\n"
   fi
 
   if [ -f "$PYCHARM_CE_FILE" ]; then
     printf "${GREEN_TXT}Patching PyCharm CE shortcut.${NC}\n"
     sed -i -e 's/Exec="/Exec=bash -i -c "/g' $PYCHARM_CE_FILE
-    sed -i -e 's/Name=PyCharm CE/Name=ROS flavored PyCharm CE/g' $PYCHARM_CE_FILE
+    sed -i -e 's/Name=PyCharm /Name=ROS flavored PyCharm /g' $PYCHARM_CE_FILE
   else
-     printf "${YELLOW_TXT}PyCharm CE not found in ~/.local/share/applications${NC}\n"
+    printf "${YELLOW_TXT}PyCharm CE not found in ~/.local/share/applications${NC}\n"
   fi
 }
 
@@ -449,4 +449,9 @@ function clean_ROS2_ws() {
     printf "${GREEN_TXT}---DONE---${NC}\n"
   fi
 
+}
+
+function rbi() {
+  f=${1:-"./"}
+  ros2 bag info $f
 }
