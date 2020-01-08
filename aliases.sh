@@ -37,6 +37,7 @@ alias csr2='unROS; source /opt/ros/${ROS2_NAME}/setup.bash'
 
 alias cab='catkin build --summary'
 alias cob='colcon build --symlink-install'
+alias cobp='colcon build --symlink-install --event-handlers console_cohesion+ --packages-select '
 alias coc='clean_ROS2_ws $(cat $WS_FILE)'
 alias cw='cd $(cat $WS_FILE)'
 alias cs='cd $(cat $WS_FILE)/src'
@@ -50,6 +51,8 @@ alias x='chmod +x '
 alias mke='make -j`nproc`'
 alias temp='watch -n 0.1 sensors'
 
+# shopt -s direxpand
+shopt -s expand_aliases
 shopt -s histappend
 shopt -s cmdhist
 export PROMPT_COMMAND='history -a'

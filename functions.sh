@@ -451,6 +451,23 @@ function clean_ROS2_ws() {
 
 }
 
+function roscd() {
+  pkgname=${1:-""}
+  if [[ -z "${ws}" ]]; then
+    printf "${RED_TXT}ROS package name not specified.${NC}\n"
+  else
+    get_current_ws
+    determine_ws_ros_version $curr_ws
+    if [[ $ros_type == "ROS2" ]]; then # Catkin found in ws
+      cd $(ros2 pkg prefix $pkgname) 
+    else
+      roscd $pkgname
+    fi
+
+  fi
+
+}
+
 function rbi() {
   f=${1:-"./"}
   ros2 bag info $f
