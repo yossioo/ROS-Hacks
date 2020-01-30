@@ -8,6 +8,8 @@
 
 # Watch the typed command
 "\e[15;5~": "\e[Hwatch -n 0.1 \"\e[F\" \n"              # On Ctrl+F5
+# Run a command in tmux detached session
+"\e[15;2~": "\e[Htmux new -d \"\e[F\" \n"              # On Shift+F5
 
 # Use F3 to call select_ws
 "\eOR": "select_ws\n"
