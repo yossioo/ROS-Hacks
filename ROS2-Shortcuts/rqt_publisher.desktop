@@ -1,0 +1,10 @@
+[Desktop Entry]
+Version=1.0
+Type=Application
+Name=RQT Publisher
+Icon=dashing-crop
+Exec=bash -i -c "ros2 run rqt_publisher rqt_publisher" %f
+#Comment=Visualization Tool for ROS
+Categories=Development;IDE;
+Terminal=false
+StartupWMClass=rqt

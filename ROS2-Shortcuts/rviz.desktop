@@ -1,0 +1,21 @@
+[Desktop Entry]
+Categories=Development;IDE;
+Comment[en_IL]=
+Comment=
+Exec=bash -i -c "ros2 run rviz2 rviz2" %f
+GenericName[en_IL]=RViz
+GenericName=RViz
+Icon=dashing-crop
+MimeType=
+Name=RViz Tool
+Path=
+StartupNotify=true
+StartupWMClass=rqt
+Terminal=false
+TerminalOptions=
+Type=Application
+Version=1.0
+X-DBUS-ServiceName=
+X-DBUS-StartupType=
+X-KDE-SubstituteUID=false
+X-KDE-Username=
