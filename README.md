@@ -34,7 +34,7 @@ cd ~/.ROS-Hacks;  bash setup.sh
 
 The `~/.inputrc` file is saved to  `~/.inputrc.bak` prior to being overwritten.
 
-Defaults for ROS versions are: Melodic for ROS1, and Dashing for ROS2. Adjust in `~/aliases.sh` if needed.
+Defaults for ROS versions are: Melodic for ROS1, and Dashing for ROS2. Adjust in `aliases.sh` if needed.
 
 ## Terminal shortcuts
 The shortcuts can be run in a **new** terminal after the installation. _Note: re-sourcing `~/.bashrc` isn't enough._
