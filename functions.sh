@@ -159,7 +159,9 @@ function unROS() {
 function select_ws() {
     get_current_ws
     find_ws
-    ask_for_ws
+    print_domain_info
+    ask_for_ws_and_domain
+    
     c=0
     for i in "${arrIN[@]}"; do
         c=$(($c + 1))
@@ -195,6 +197,20 @@ function set_current_ws() {
     fi
 }
 
+function get_ros_domain_id(){
+    unset domain_id
+    domain_id=$(cat $ROS_DOMAIN_ID_FILE)
+}
+
+function set_ros_domain_id(){
+    id=${1:-""}
+    if [[ -z "${id}" ]]; then
+        printf "${RED_TXT}ROS DOMAIN ID not specified.${NC}\n"
+    else
+        printf "${BLUE}ROS DOMAIN ID${NC} set to: ${BLUE}$id${NC}\n"
+        echo $id >$ROS_DOMAIN_ID_FILE
+    fi
+}
 function source_ws() {
     ws_name=${1:-""}
     if [[ -z "${ws_name}" ]]; then
@@ -213,30 +229,39 @@ function source_ws() {
             printf "${RED_TXT}ERROR in ROS WS $ws_name - Sourcing aborted.${NC}\n"
         fi
     fi
+    get_ros_domain_id
+    export ROS_DOMAIN_ID=$domain_id
 }
 
-function ask_for_ws() {
+function ask_for_ws_and_domain() {
     if [[ $(($ws_count)) -lt 10 ]]; then
-        read -n 1 -p "Select desired WS # to do a clean source [1-$ws_count] or cancel : " num
+        read -n 1 -p "Select desired WS # to do a clean source [1-$ws_count] or 'd' to change domain : " num
     else
-        read -n 2 -p "Select desired WS ## to do a clean source [1-$ws_count] or cancel : " num
+        read -n 2 -p "Select desired WS ## to do a clean source [1-$ws_count] or 'd' to change domain : " num
     fi
     case $num in
         [123456789]*)
             echo ""
             # echo "Sourcing WS #$num"
         ;;
-        # [Cc]*)
-        #   echo ""
-        #   return 1
-        #   ;;
+        [Dd]*)
+            echo ""
+            ask_for_new_domain
+            read new_domain
+            set_ros_domain_id $new_domain
+            export ROS_DOMAIN_ID=$new_domain
+
+            return 0
+        ;;
         *)
             echo ""
             echo "Cancelling."
         ;;
     esac
 }
-
+function ask_for_new_domain(){
+    printf "Please enter new ${BLUE_TXT}ROS_DOMAIN_ID${NC}: "
+}
 function rebuild_curr_ws() {
     get_current_ws
     determine_ws_ros_version $curr_ws
@@ -312,7 +337,10 @@ function find_ws() {
     printf "|%-5s|%-10s|%-$(echo $max_l)s|\n" "-----" "----------" "$pad"
     
 }
-
+function print_domain_info(){
+    get_ros_domain_id
+    printf "${BLUE_TXT}ROS_DOMAIN_ID${NC}: ${LIGHT_BLUE_TXT}$ROS_DOMAIN_ID${NC}\n"
+}
 function determine_ws_ros_version() {
     ws=${1:-""}
     catkinws=0
@@ -424,19 +452,6 @@ function fixJB() {
 }
 
 ### Arducopter TMUX:
-function arducopter-launch() {
-    ac_arguments="-f gazebo-goshawk200 -I0 -L wpK2"
-    ac_line="cd ~/ardupilot/ArduCopter; ~/ardupilot/Tools/autotest/sim_vehicle.py $ac_arguments"
-    printf "Launching ArduCopter with ${LIGHT_BLUE_TXT}$ac_arguments${NC}\n"
-    tmux new -s arducopter_launch -d "${ac_line}"
-}
-
-function kill-arducopter() {
-    printf "${YELLOW_TXT}Killing arducopter proxy${NC}.\n"
-    tmux send-keys -t arducopter_launch.0 C-c C-c C-d ENTER
-    tmux kill-session -t arducopter_launch
-    pkill -f ArduCopter
-}
 
 function clean_ROS2_ws() {
     ws=${1:-""}
@@ -469,7 +484,3 @@ function roscd() {
     
 }
 
-function rbi() {
-    f=${1:-"./"}
-    ros2 bag info $f
-}

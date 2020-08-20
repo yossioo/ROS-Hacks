@@ -1,12 +1,12 @@
 #!/usr/bin/env bash
 if [[ ${SKIP} == 1 ]]; then
-  return 1
+    return 1
 fi
 
 if [[ $(lsb_release -cs) == 'xenial' ]]; then
-  ROS1_NAME='kinetic'
-elif [[ $(lsb_release -cs) == 'bionic' ]]; then
-  ROS1_NAME='melodic'
+    ROS1_NAME='kinetic'
+    elif [[ $(lsb_release -cs) == 'bionic' ]]; then
+    ROS1_NAME='melodic'
 fi
 
 ROS2_NAME='dashing'
@@ -26,6 +26,7 @@ YELLOW_TXT='\e[93m'
 NC='\033[0m'
 
 WS_FILE=$HOME/.ros_ws_selected
+ROS_DOMAIN_ID_FILE=$HOME/.ros_domain_id
 QUICK_COMMAND_FILE=.quick_command
 
 alias pR='printenv | grep -i -e ROS -e CATKIN -e CMAKE -e RMW'
