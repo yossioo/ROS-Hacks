@@ -136,7 +136,12 @@ function get_current_ws() {
     curr_ws=$(cat $WS_FILE)
     # printf "${GREEN_TXT2}ROS workspace: $curr_ws ${NC}\n"
 }
-
+function get_current_ws_name(){
+    get_current_ws
+    myarray=(${curr_ws//\// })
+    
+    echo ${myarray[-1]}
+}
 function set_current_ws() {
     new_curr_ws=${1:-""}
     if [[ -z "${new_curr_ws}" ]]; then
