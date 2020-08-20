@@ -1,56 +1,5 @@
 #!/usr/bin/env bash
 
-function kill-tmux-quick-command() {
-    printf "${YELLOW_TXT}Killing TEST_LAUNCH along with GAZEBOSIM and ROS nodes${NC}.\n"
-    tmux send-keys -t quick_command.0 C-c C-c C-c C-d ENTER
-    tmux kill-session -t quick_command
-    pkill gzserver
-    pkill gzclient
-    rosnode kill -a
-    get_current_ws
-    if [[ ${curr_ws} == *"angry"* ]] || [[ ${curr_ws} == *"birds"* ]]; then
-        kill-arducopter
-    fi
-}
-
-function set-quick-command() {
-    get_current_ws
-    lstring=${1:-""}
-    if [[ -z "${lstring}" ]]; then
-        printf "${RED_TXT}Quick command string not specified.${NC}\n"
-    else
-        printf "Saving the Quick-Command ${GREEN_TXT}$lstring${NC} for tests.\nHit ${LIGHT_BLUE_TXT}F12${NC} in terminal to launch it in background.\n"
-        echo $lstring >${curr_ws}/$QUICK_COMMAND_FILE
-        curr_quick_command=$(cat ${curr_ws}/$QUICK_COMMAND_FILE)
-    fi
-}
-
-function get-quick-command() {
-    get_current_ws
-    if [[ -f "${curr_ws}/$QUICK_COMMAND_FILE" ]]; then
-        curr_quick_command=$(cat ${curr_ws}/$QUICK_COMMAND_FILE)
-    fi
-}
-function print-quick-command() {
-    get-quick-command
-    printf "Quick command set to: ${GREEN_TXT}$curr_quick_command${NC}\n"
-}
-function exec-quick-command() {
-    # source ~/.bashrc
-    get-quick-command
-    if [[ ${curr_ws} == *"angry"* ]] || [[ ${curr_ws} == *"birds"* ]]; then
-        arducopter-launch
-    fi
-    
-    if [[ -f "${curr_ws}/$QUICK_COMMAND_FILE" ]]; then
-        printf "Executing ${GREEN_TXT}$curr_quick_command${NC} in tmux session.\nUse '${LIGHT_BLUE_TXT}tmux a -t quick_command${NC}' to attach to session\n"
-        tmux new -s quick_command -d "${curr_quick_command}"
-    else
-        printf "${RED_TXT}No launch specified in $curr_ws${NC}.\n"
-        error=1
-    fi
-}
-
 function prompt_new_ws() {
     printf "${LIGHT_BLUE_TXT}Creating new ROS workspace, specify ROS1 or ROS2 (enter 1 or 2):${NC}\n"
     num=0
@@ -211,6 +160,7 @@ function set_ros_domain_id(){
         echo $id >$ROS_DOMAIN_ID_FILE
     fi
 }
+
 function source_ws() {
     ws_name=${1:-""}
     if [[ -z "${ws_name}" ]]; then
@@ -250,7 +200,7 @@ function ask_for_ws_and_domain() {
             read new_domain
             set_ros_domain_id $new_domain
             export ROS_DOMAIN_ID=$new_domain
-
+            
             return 0
         ;;
         *)
@@ -259,9 +209,11 @@ function ask_for_ws_and_domain() {
         ;;
     esac
 }
+
 function ask_for_new_domain(){
     printf "Please enter new ${BLUE_TXT}ROS_DOMAIN_ID${NC}: "
 }
+
 function rebuild_curr_ws() {
     get_current_ws
     determine_ws_ros_version $curr_ws
@@ -337,10 +289,12 @@ function find_ws() {
     printf "|%-5s|%-10s|%-$(echo $max_l)s|\n" "-----" "----------" "$pad"
     
 }
+
 function print_domain_info(){
     get_ros_domain_id
     printf "${BLUE_TXT}ROS_DOMAIN_ID${NC}: ${LIGHT_BLUE_TXT}$ROS_DOMAIN_ID${NC}\n"
 }
+
 function determine_ws_ros_version() {
     ws=${1:-""}
     catkinws=0
