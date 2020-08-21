@@ -192,7 +192,9 @@ function source_ws() {
         fi
     fi
     get_ros_domain_id
-    export ROS_DOMAIN_ID=$domain_id
+    if [[ ! -z "${domain_id}" ]]; then
+        export ROS_DOMAIN_ID=$domain_id
+    fi
 }
 
 function ask_for_ws_and_domain() {
@@ -309,7 +311,7 @@ function find_ws() {
 
 function print_domain_info(){
     get_ros_domain_id
-    printf "${BLUE_TXT}ROS_DOMAIN_ID${NC}: ${LIGHT_BLUE_TXT}$ROS_DOMAIN_ID${NC}\n"
+    printf "${BLUE_TXT}ROS_DOMAIN_ID${NC}: ${LIGHT_BLUE_TXT}$domain_id${NC}\n"
 }
 
 function determine_ws_ros_version() {
