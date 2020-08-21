@@ -153,7 +153,14 @@ function set_current_ws() {
 
 function get_ros_domain_id(){
     unset domain_id
-    domain_id=$(cat $ROS_DOMAIN_ID_FILE)
+    if [ -f "$ROS_DOMAIN_ID_FILE" ]; then
+        domain_id=$(cat $ROS_DOMAIN_ID_FILE)
+    fi
+}
+
+function print_ros_domain_id(){
+    get_ros_domain_id
+    echo $domain_id
 }
 
 function set_ros_domain_id(){
@@ -203,9 +210,14 @@ function ask_for_ws_and_domain() {
             echo ""
             ask_for_new_domain
             read new_domain
-            set_ros_domain_id $new_domain
-            export ROS_DOMAIN_ID=$new_domain
-            
+            if [[ -z "${new_domain}" ]]; then
+                echo "Disabling domain"
+                rm $ROS_DOMAIN_ID_FILE
+                unset ROS_DOMAIN_ID
+            else
+                set_ros_domain_id $new_domain
+                export ROS_DOMAIN_ID=$new_domain
+            fi
             return 0
         ;;
         *)
@@ -216,7 +228,7 @@ function ask_for_ws_and_domain() {
 }
 
 function ask_for_new_domain(){
-    printf "Please enter new ${BLUE_TXT}ROS_DOMAIN_ID${NC}: "
+    printf "Please enter new ${BLUE_TXT}ROS_DOMAIN_ID${NC} (empty to disable): "
 }
 
 function rebuild_curr_ws() {
