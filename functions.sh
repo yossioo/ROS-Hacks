@@ -210,7 +210,7 @@ function ask_for_ws_and_domain() {
         ;;
         [Dd]*)
             echo ""
-            ask_for_new_domain
+            printf "Please enter new ${BLUE_TXT}ROS_DOMAIN_ID${NC} (empty to disable): "
             read new_domain
             if [[ -z "${new_domain}" ]]; then
                 echo "Disabling domain"
@@ -227,10 +227,6 @@ function ask_for_ws_and_domain() {
             echo "Cancelling."
         ;;
     esac
-}
-
-function ask_for_new_domain(){
-    printf "Please enter new ${BLUE_TXT}ROS_DOMAIN_ID${NC} (empty to disable): "
 }
 
 function rebuild_curr_ws() {
