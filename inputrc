@@ -22,7 +22,6 @@
 
 # Source bash, catkin etc.
 "\e[15~": "source ~/.bashrc\n"              # On F5
-"\eOS": "source_ws $(cat $WS_FILE); cs;\n"              # On F4
 
 # Rebuild the current workspace
 "\e[20~": "rebuild_curr_ws\n"               # On F9

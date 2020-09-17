@@ -5,7 +5,7 @@ fi
 
 if [[ $(lsb_release -cs) == 'xenial' ]]; then
     ROS1_NAME='kinetic'
-    elif [[ $(lsb_release -cs) == 'bionic' ]]; then
+elif [[ $(lsb_release -cs) == 'bionic' ]]; then
     ROS1_NAME='melodic'
 fi
 
@@ -49,6 +49,8 @@ alias cobp='colcon build --symlink-install --event-handlers console_cohesion+ --
 alias coc='clean_ROS2_ws $(cat $WS_FILE)'
 alias cw='cd $(cat $WS_FILE)'
 alias cs='cd $(cat $WS_FILE)/src'
+alias cg='touch COLCON_IGNORE'
+alias rcg='rm COLCON_IGNORE'
 
 alias rt='ros2 topic '
 alias rn='ros2 node '
@@ -70,5 +72,8 @@ export HISTCONTROL=ignoreboth
 export HISTIGNORE='t:f:l:ls:bg:fg:history:h:select_ws:kill-tmux-gz:test-launch:qe-file:kp:kill-tmux-quick-command:exec-quick-command'
 export HISTTIMEFORMAT='%F %T '
 
-
 # PS1=' \[\e[1;32m\]\u\[\033[00m\] \[\e[32m\]$(get_current_ws_name):$ROS_DOMAIN_ID\[\033[00m\] \[\033[03;94m\]\w\[\033[00m\]\[\033[38;5;51m\]$(__git_ps1)\[\033[00m\]:\n\$ '
+
+bind '"^[OS":"~/.ROS-Hacks/ROS2-Utilities/bullet_reconfigure.py\n"'
+
+bind '"\eOS":"~/.ROS-Hacks/ROS2-Utilities/bullet_reconfigure.py\n"'
