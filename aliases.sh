@@ -66,10 +66,10 @@ shopt -s expand_aliases
 shopt -s histappend
 shopt -s cmdhist
 export PROMPT_COMMAND='history -a'
-export HISTFILESIZE=1000000
-export HISTSIZE=1000000
+# export HISTFILESIZE=1000000
+# export HISTSIZE=1000000
 export HISTCONTROL=ignoreboth
-export HISTIGNORE='t:f:l:ls:bg:fg:history:h:select_ws:kill-tmux-gz:test-launch:qe-file:kp:kill-tmux-quick-command:exec-quick-command'
+export HISTIGNORE='t:f:l:ls:bg:fg:history:h:select_ws:kill-tmux-gz:test-launch:qe-file:kp:f_run_icl'
 export HISTTIMEFORMAT='%F %T '
 
 # PS1=' \[\e[1;32m\]\u\[\033[00m\] \[\e[32m\]$(get_current_ws_name):$ROS_DOMAIN_ID\[\033[00m\] \[\033[03;94m\]\w\[\033[00m\]\[\033[38;5;51m\]$(__git_ps1)\[\033[00m\]:\n\$ '
