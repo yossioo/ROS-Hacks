@@ -232,17 +232,17 @@ function ask_for_ws_and_domain() {
 function rebuild_curr_ws() {
     get_current_ws
     determine_ws_ros_version $curr_ws
-    if [[ $ros_type == "ROS1" ]]; then # Catkin found in ws
-        csr
-        (cd $curr_ws && cab)
+    if [[ $ros_type == "ROS1" ]]
+    then # Catkin found in ws
+        (cd $curr_ws && source devel/setup.bash  && cab)
         if [[ $? == 0 ]]; then
             source_ws $curr_ws
         else
             printf "${RED_TXT}catkin errors - sourcing aborted.${NC}\n"
         fi
-        elif [[ $ros_type == "ROS2" ]]; then # Catkin found in ws
-        csr2
-        (cd $curr_ws && cob)
+    elif [[ $ros_type == "ROS2" ]]
+    then # Catkin found in ws
+        (cd $curr_ws && source install/setup.bash && cob)
         if [[ $? == 0 ]]; then
             source_ws $curr_ws
         else

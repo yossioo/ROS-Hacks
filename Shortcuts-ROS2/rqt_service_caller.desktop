@@ -1,0 +1,22 @@
+[Desktop Entry]
+Categories=Development;IDE;
+Comment[en_IL]=
+Comment=
+Exec=bash -i -c "ros2 run rqt_service_caller rqt_service_caller" %f
+GenericName[en_IL]=
+GenericName=
+Icon=gtk-execute
+MimeType=
+Name[en_IL]=RQT Service Caller
+Name=RQT Service Caller
+Path=
+StartupNotify=true
+StartupWMClass=rqt
+Terminal=false
+TerminalOptions=
+Type=Application
+Version=1.0
+X-DBUS-ServiceName=
+X-DBUS-StartupType=
+X-KDE-SubstituteUID=false
+X-KDE-Username=

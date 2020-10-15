@@ -2,13 +2,13 @@
 Categories=Development;IDE;
 Comment[en_IL]=
 Comment=
-Exec=bash -i -c "rqt_graph"
+Exec=bash -i -c "ros2 run rqt_publisher rqt_publisher" %f
 GenericName[en_IL]=
 GenericName=
-Icon=dashing-crop
+Icon=mail-send
 MimeType=
-Name[en_IL]=Node Graph
-Name=Node Graph
+Name[en_IL]=RQT Publisher
+Name=RQT Publisher
 Path=
 StartupNotify=true
 StartupWMClass=rqt

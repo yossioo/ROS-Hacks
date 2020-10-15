@@ -1,0 +1,22 @@
+[Desktop Entry]
+Categories=Development;IDE;
+Comment[en_IL]=
+Comment=
+Exec=bash -i -c "/opt/ros/dashing/bin/rqt"
+GenericName[en_IL]=
+GenericName=
+Icon=window-duplicate
+MimeType=
+Name[en_IL]=RQT Tool
+Name=RQT Tool
+Path=
+StartupNotify=true
+StartupWMClass=rqt
+Terminal=false
+TerminalOptions=
+Type=Application
+Version=1.0
+X-DBUS-ServiceName=
+X-DBUS-StartupType=
+X-KDE-SubstituteUID=false
+X-KDE-Username=

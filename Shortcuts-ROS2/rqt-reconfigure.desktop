@@ -1,0 +1,21 @@
+[Desktop Entry]
+Categories=Development;IDE;
+Comment[en_IL]=
+Comment=
+Exec=bash -i -c "ros2 daemon stop; ros2 run rqt_reconfigure rqt_reconfigure"
+GenericName[en_IL]=
+GenericName=
+Icon=settings-configure
+MimeType=
+Name=RQT-Recon
+Path=
+StartupNotify=true
+StartupWMClass=rqt
+Terminal=false
+TerminalOptions=
+Type=Application
+Version=1.0
+X-DBUS-ServiceName=
+X-DBUS-StartupType=
+X-KDE-SubstituteUID=false
+X-KDE-Username=
