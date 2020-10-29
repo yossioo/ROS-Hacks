@@ -72,7 +72,7 @@ print("\n" + bcolors.BOLDMAGENTA + "=== PACKAGES ===" + bcolors.ENDC)
 
 for ws, pkgs in ws_and_packages.items():
     print("\n" + bcolors.BOLDCYAN + f"==> {ws} <==" + bcolors.ENDC)
-    for p in pkgs:
+    for p in sorted(pkgs):
         under, over = [], []
         if len(packages_and_ws[p]) > 1:
             under, over = get_other_wss(ws, packages_and_ws[p])
