@@ -79,7 +79,7 @@ def diag_cb(msg: diag_msg):
                     color, s_level = Colors.BOLDYELLOW, "WARN"
                 elif s.level == DiagnosticStatus.ERROR:
                     color, s_level = Colors.BOLDRED, "ERROR"
-                line = f"\t{color}[ {s.name:<20}:{s_level:>5}]{Colors.RESET}"
+                line = f"\t{color}[ {s.name:<22}:{s_level:>5}]{Colors.RESET}"
                 print(line)
                 if s.message:
                     print(f"\t↳ {Colors.BOLDCYAN}{s.message}{Colors.RESET}")

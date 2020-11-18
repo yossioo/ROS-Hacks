@@ -274,13 +274,13 @@ function find_ws() {
     pad=""
     c=$(($max_l + 2))
     while [[ $c > 0 ]]; do
-        pad="$pad-"
+        pad="$pad─"
         c=$((c - 1))
     done
     
-    printf "|%-5s|%-10s|%-$(echo $max_l)s|\n" "-----" "----------" "$pad"
-    printf "| %-3s | %-8s | %-$(echo $max_l)s |\n" "NUM" "ROS_TYPE" "LOCATION"
-    printf "|%-5s|%-10s|%-$(echo $max_l)s|\n" "-----" "----------" "$pad"
+    printf "┌%-5s┬%-10s┬%-$(echo $max_l)s┐\n" "─────" "──────────" "$pad"
+    printf "│ %-3s │ %-8s │ %-$(echo $max_l)s │\n" "NUM" "ROS_TYPE" "LOCATION"
+    printf "├%-5s┼%-10s┼%-$(echo $max_l)s┤\n" "─────" "──────────" "$pad"
     for i in "${arrIN[@]}"; do
         if [[ $i == $curr_ws ]]; then
             sourced_color=${WHITE_TXT}
@@ -293,15 +293,15 @@ function find_ws() {
         l=$(expr length "$i")
         
         if [[ $ros_type == "ROS1" ]]; then # Catkin found in ws
-            printf "| ${NC}%-3s${NC} | ${BLUE_TXT}%-8s${NC} | ${sourced_color}%-$(echo $max_l)s${NC} |\n" "$ws_count" "$ros_type" "$i"
+            printf "│ ${NC}%-3s${NC} │ ${BLUE_TXT}%-8s${NC} │ ${sourced_color}%-$(echo $max_l)s${NC} │\n" "$ws_count" "$ros_type" "$i"
             elif [[ $ros_type == "ROS2" ]]; then # Catkin found in ws
-            printf "| ${NC}%-3s${NC} | ${GREEN_TXT2}%-8s${NC} | ${sourced_color}%-$(echo $max_l)s${NC} |\n" "$ws_count" "$ros_type" "$i"
+            printf "│ ${NC}%-3s${NC} │ ${GREEN_TXT2}%-8s${NC} │ ${sourced_color}%-$(echo $max_l)s${NC} │\n" "$ws_count" "$ros_type" "$i"
         else
-            printf "| ${NC}%-3s${NC} | ${RED_TXT}%-8s${NC} | ${sourced_color}%-$(echo $max_l)s${NC} |\n" "$ws_count" "$ros_type" "$i"
+            printf "│ ${NC}%-3s${NC} │ ${RED_TXT}%-8s${NC} │ ${sourced_color}%-$(echo $max_l)s${NC} │\n" "$ws_count" "$ros_type" "$i"
         fi
         
     done
-    printf "|%-5s|%-10s|%-$(echo $max_l)s|\n" "-----" "----------" "$pad"
+    printf "└%-5s┴%-10s┴%-$(echo $max_l)s┘\n" "─────" "──────────" "$pad"
     
 }
 
