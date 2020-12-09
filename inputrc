@@ -27,6 +27,8 @@
 "\e[20~": "rebuild_curr_ws\n"               # On F9
 "\e[20;2~": "rebuild_curr_ws && exit\n"               # On Shift-F9
 
+# Colcon build specific package
+"\e[19~": "\e[Hpushd `cat ~/.ros_ws_selected`; colcon build --packages-select \e[F \n"
 
 "\e\C-i": "sudo apt install -y "
 "\e\C-p": "python3 -m pip install "
