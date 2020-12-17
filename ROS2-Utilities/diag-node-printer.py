@@ -15,7 +15,7 @@ except Exception as e:
 
 
 frame_id = ""
-namespace = "/" + os.environ["USER"]
+namespace = "/"
 
 for arg in sys.argv:
     vals = arg.split(":=")
@@ -79,7 +79,7 @@ def diag_cb(msg: diag_msg):
                     color, s_level = Colors.BOLDYELLOW, "WARN"
                 elif s.level == DiagnosticStatus.ERROR:
                     color, s_level = Colors.BOLDRED, "ERROR"
-                line = f"\t{color}[ {s.name:<22}:{s_level:>5}]{Colors.RESET}"
+                line = f"\t{color}[ {s.name:<22}:{s_level:>5} ]{Colors.RESET}"
                 print(line)
                 if s.message:
                     print(f"\t↳ {Colors.BOLDCYAN}{s.message}{Colors.RESET}")

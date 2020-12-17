@@ -38,7 +38,7 @@ ROS_DOMAIN_ID_FILE=$HOME/.ros_domain_id
 QUICK_COMMAND_FILE=.quick_command
 
 alias pR='printenv | grep -i -e ROS -e CATKIN -e CMAKE -e RMW'
-alias sc='source_ws $(cat $WS_FILE)'
+alias sw='source_ws $(cat $WS_FILE)'
 alias sr='source /opt/ros/${ROS1_NAME}/setup.bash'
 alias csr='unROS; source /opt/ros/${ROS1_NAME}/setup.bash'
 alias sr2='source /opt/ros/${ROS2_NAME}/setup.bash'
@@ -47,7 +47,9 @@ alias csr2='unROS; source /opt/ros/${ROS2_NAME}/setup.bash'
 alias cab='catkin build --summary'
 alias cob='colcon build --symlink-install'
 alias cobd='colcon build --symlink-install --cmake-args -DCMAKE_BUILD_TYPE=Debug'
+alias cobr='colcon build --symlink-install --cmake-args -DCMAKE_BUILD_TYPE=Release'
 alias cobp='colcon build --symlink-install --packages-select'
+alias cobput='colcon build --symlink-install --packages-up-to'
 alias cobpv='colcon build --symlink-install --event-handlers console_cohesion+ --packages-select'
 alias coc='clean_ROS2_ws $(cat $WS_FILE)'
 alias cw='cd $(cat $WS_FILE)'
