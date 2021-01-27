@@ -99,6 +99,29 @@ def timer_cb():
 
 rclpy.init(args=sys.argv)
 node = Node("diag_listener", namespace=namespace)
+if namespace == "/":
+    time.sleep(1)
+    nns = node.get_node_names_and_namespaces()
+    discovered_ns = {ns for (_,ns) in nns if ns != "/"}
+    ns_selection = {i+1: ns for (i, ns) in enumerate(sorted(discovered_ns))}
+    node.get_logger().warn(f"Namespace not specified, use '__ns:=/XXXX' argument for specific namespace")
+    print("Discovered namespaces:")
+    for i, ns in ns_selection.items():
+        print(f"\t{i}: {ns}")
+    try:
+        selection = input("Please enter desired namespace number: ")
+    except KeyboardInterrupt:
+        node.destroy_node()
+        sys.exit(0)
+    if int(selection) not in ns_selection.keys():
+        print("WRONG")
+        node.destroy_node()
+        sys.exit(0)
+    ns = ns_selection[int(selection)]
+    print(f"Restarting in namespace: {ns}")
+    node.destroy_node()
+    node = Node("diag_listener", namespace=ns)
+    
 sub = node.create_subscription(diag_msg, "diagnostics", diag_cb, 10)
 timer = node.create_timer(2, timer_cb)
 timer.reset()
