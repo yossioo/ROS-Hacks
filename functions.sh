@@ -242,7 +242,7 @@ function rebuild_curr_ws() {
         fi
     elif [[ $ros_type == "ROS2" ]]
     then # Catkin found in ws
-        (cd $curr_ws && source install/setup.bash && cob)
+        (unROS && cd $curr_ws && source install/setup.bash && cob)
         if [[ $? == 0 ]]; then
             source_ws $curr_ws
         else
