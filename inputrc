@@ -8,6 +8,8 @@
 
 # Watch the typed command
 "\e[15;5~": "\e[Hwatch -n 0.1 \"\e[F\" \n"              # On Ctrl+F5
+"\e[15;3~": "\e[Hwatch -n 0.1 \"\e[F\" \n"              # On Alt+F5
+"\e[15;5~": "\e[Hwhile date; do time \e[F\ ; done\n"              # On Ctrl+F5
 # Run a command in tmux detached session
 "\e[15;2~": "\e[Htmux new -d \"\e[F\" \n"              # On Shift+F5
 
@@ -26,6 +28,7 @@
 # Rebuild the current workspace
 "\e[20~": "rebuild_curr_ws\n"               # On F9
 "\e[20;2~": "rebuild_curr_ws && exit\n"               # On Shift-F9
+"\e[20;5~": "rebuild_curr_ws "--cmake-force-configure"\n"               # On Ctrl-F9
 
 # Colcon build specific package
 "\e[19~": "\e[Hpushd `cat ~/.ros_ws_selected` > /dev/null; colcon build --packages-select \e[F ; popd > /dev/null\n"
