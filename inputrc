@@ -1,10 +1,10 @@
 # Refer to: https://stackoverflow.com/questions/4200800/in-bash-how-do-i-bind-a-function-key-to-a-command
 #  https://superuser.com/questions/269464/understanding-control-characters-in-inputrc
 
-"\e\C-t": "rostopic list\n"
-"\e\C-n": "rosnode list\n"
+"\e\C-t": "ros2 topic list\n"
+"\e\C-n": "ros2 node list\n"
 "\e\C-g": "git clone "
-
+"\C-g": " | grep -i "
 
 # Watch the typed command
 "\e[15;5~": "\e[Hwatch -n 0.1 \"\e[F\" \n"              # On Ctrl+F5
