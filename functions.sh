@@ -183,10 +183,17 @@ function source_ws() {
             unROS
             printf "Sourcing ${WHITE_TXT} $ws_name ${NC}\n"
             source $ws_name/devel/setup.bash
+            if [ -f $ws_name/post_source.bash ]; then
+                  source $ws_name/post_source.bash
+            fi
             elif [[ $ros_type == "ROS2" ]]; then # Catkin found in ws
             unROS
             printf "Sourcing ${WHITE_TXT}$ws_name ${NC}\n"
             source $ws_name/install/setup.bash
+            if [ -f $ws_name/post_source.bash ]; then
+                  source $ws_name/post_source.bash
+            fi
+            source $ws_name/post_source.bash
         else
             printf "${RED_TXT}ERROR in ROS WS $ws_name - Sourcing aborted.${NC}\n"
         fi
