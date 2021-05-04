@@ -193,7 +193,6 @@ function source_ws() {
             if [ -f $ws_name/post_source.bash ]; then
                   source $ws_name/post_source.bash
             fi
-            source $ws_name/post_source.bash
         else
             printf "${RED_TXT}ERROR in ROS WS $ws_name - Sourcing aborted.${NC}\n"
         fi
