@@ -31,7 +31,7 @@
 "\e[20;5~": "rebuild_curr_ws "--cmake-force-configure"\n"               # On Ctrl-F9
 
 # Colcon build specific package
-"\e[19~": "\e[Hpushd `cat ~/.ros_ws_selected` > /dev/null; colcon build --packages-select \e[F ; popd > /dev/null\n"
+"\e[19~": "\e[Hpushd `cat ~/.ros_ws_selected` > /dev/null; colcon build --symlink-install --packages-select \e[F ; popd > /dev/null\n"
 
 "\e\C-i": "sudo apt install -y "
 "\e\C-p": "python3 -m pip install "
