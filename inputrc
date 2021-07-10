@@ -25,6 +25,9 @@
 # Source bash, catkin etc.
 "\e[15~": "source ~/.bashrc\n"              # On F5
 
+# Source python3.9 venv
+"\e[18~": " source ~/Dev/venv_python3.9/bin/activate\n"  # On F7
+
 # Rebuild the current workspace
 "\e[20~": "rebuild_curr_ws\n"               # On F9
 "\e[20;2~": "rebuild_curr_ws && exit\n"               # On Shift-F9
