@@ -9,6 +9,9 @@ if [[ $(lsb_release -cs) == 'xenial' ]]; then
 elif [[ $(lsb_release -cs) == 'bionic' ]]; then
     ROS1_NAME='melodic'
     ROS2_NAME='dashing'
+elif [[ $(lsb_release -cs) == 'focal' ]]; then
+    ROS1_NAME='noetic'
+    ROS2_NAME='foxy'
 fi
 
 
