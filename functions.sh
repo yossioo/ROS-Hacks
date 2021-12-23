@@ -184,6 +184,7 @@ function source_ws() {
             printf "Sourcing ${WHITE_TXT} $ws_name ${NC}\n"
             source $ws_name/devel/setup.bash
             if [ -f $ws_name/post_source.bash ]; then
+                  #printf "Sourcing ${WHITE_TXT} $ws_name/post_source.bash ${NC}\n"
                   source $ws_name/post_source.bash
             fi
             elif [[ $ros_type == "ROS2" ]]; then # Catkin found in ws
@@ -261,7 +262,9 @@ function rebuild_curr_ws() {
 }
 
 function find_ws() {
-    ws=$(find ~/ -maxdepth 1 -type d -name \*ws\* | sort)
+    #ws=$(find ~/ -maxdepth 1 -type d -name \*ws\* | sort)
+    ws=$(find ~/ -maxdepth 1 -type d -name "*_ws" -not -name ".*" | sort)
+
     # echo $ws
     arrIN=(${ws// / })
     # echo ${arrIN[2]}
