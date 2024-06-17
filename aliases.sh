@@ -82,7 +82,3 @@ export HISTTIMEFORMAT='%F %T '
 
 # PS1=' \[\e[1;32m\]\u\[\033[00m\] \[\e[32m\]$(get_current_ws_name):$ROS_DOMAIN_ID\[\033[00m\] \[\033[03;94m\]\w\[\033[00m\]\[\033[38;5;51m\]$(__git_ps1)\[\033[00m\]:\n\$ '
 
-bind '"^[OS":"~/.ROS-Hacks/ROS2-Utilities/diag-node-printer.py\n"'
-bind '"^[[1;2S":"~/.ROS-Hacks/ROS2-Utilities/diag-node-printer.py target:=mc\n"'
-bind '"\eOS":"~/.ROS-Hacks/ROS2-Utilities/diag-node-printer.py\n"'
-bind '"\e[1;2S":"~/.ROS-Hacks/ROS2-Utilities/diag-node-printer.py target:=mc\n"'
