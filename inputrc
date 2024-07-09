@@ -27,7 +27,7 @@
 
 # Rebuild the current workspace
 "\e[20~": "rebuild_curr_ws\n"               # On F9
-"\e[20;2~": "rebuild_curr_ws && exit\n"               # On Shift-F9
+"\e[20;2~": "clean_ROS2_ws $(cat $WS_FILE) && rebuild_curr_ws\n"               # On Shift-F9
 "\e[20;5~": "rebuild_curr_ws "--cmake-force-configure"\n"               # On Ctrl-F9
 
 # Colcon build specific package
